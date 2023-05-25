@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<!--
+    Playlister
+    v 1.0
+
+    This is the single page for Playlister, a Web application for 
+    creating, managing, sharing, and playing music playlists. Note that 
+    this version is front-end only, written entirely in vanilla JavaScript 
+    with data saved to the browser's local storage. Many more features
+    will be added in future versions.
+    
+    @author McKilla Gorilla
+    @author TerryVsGaming (Terry Shvartsman)
+-->
+
+<head>
+    <title>Playlister</title>
+    <meta charset="utf-8">
+
+    <!-- WE ARE USING THE Tangerine FONT FOR MOST CONTROLS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+
+    <!-- THESE ARE OUR STYLESHEETS, ONE FOR THE MODALS, ONE FOR -->
+    <!-- ALL OTHER LAYOUT, FONTS, AND COLORS -->
+    <link rel="stylesheet" type="text/css" href="./css/playlister-modals.css" />
+    <link rel="stylesheet" type="text/css" href="./css/playlister-style.css" />
+
+    <!-- THIS IS THE APP'S ENTRY POINT -->
+    <script type="module" src="./src/playlister/PlaylisterApp.js"></script>
+
+</head>
+
+<body>
+    <!-- EVERY CONTROL (including our modals) APPEAR INSIDE THE root -->
+    <div id="root">
+        <!-- OUR MAIN UI HAS 5 MAJOR REGIONS -->
+        <div id="banner">
+            Playlister
+        </div>
+        <div id="sidebar-heading">
+            <input type="button" id="add-list-button" class="toolbar-button" value="+" />
+            Your Playlists
+        </div>
+        <div id="sidebar-list">
+        </div>
+        <div id="edit-toolbar">
+            <input type="button" id='addSong-button' value="+" class="toolbar-button" />
+            <input type="button" id='undo-button' value="⟲" class="toolbar-button" />
+            <input type="button" id='redo-button' value="⟳" class="toolbar-button" />
+            <input type="button" id='close-button' value="&#x2715;" class="toolbar-button" />
+            
+        </div>
+        <div id="playlist-cards">
+        </div>
+        <div id="statusbar"></div>
+
+        <!-- MODAL (i.e. dialog) FOR VERIFYING THE DELETION OF A LIST -->
+        <div class="modal" id="delete-list-modal" data-animation="slideInOutLeft">
+            <div class="modal-root" id='verify-delete-list-root'>
+                <div class="modal-north">
+                    Delete playlist?
+                </div>                
+                <div class="modal-center">
+                    <div class="modal-center-content">
+                        Are you sure you wish to permanently delete the <span id="delete-list-span"></span> playlist?
+                    </div>
+                </div>
+                <div class="modal-south">
+                    <input type="button" id="delete-list-confirm-button" class="modal-button" value='Confirm' />
+                    <input type="button" id="delete-list-cancel-button" class="modal-button" value='Cancel' />
+                </div>
+            </div>
+        </div>
+
+         
+
+        <div class="modal" id="delete-song-modal" data-animation="slideInOutLeft">
+            <div class="modal-root" id='verify-delete-song-root'>
+                <div class="modal-north">
+                    Delete song?
+                </div>                
+                <div class="modal-center">
+                    <div class="modal-center-content">
+                        Are you sure you wish to permanently delete the <span id="delete-song-span"></span> song?
+                    </div>
+                </div>
+                <div class="modal-south">
+                    <input type="button" id="delete-song-confirm-button" class="modal-button" value='Confirm' />
+                    <input type="button" id="delete-song-cancel-button" class="modal-button" value='Cancel' />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" id="edit-song-modal" data-animation="slideInOutLeft">
+            <div class="modal-root" id='dialogue-edit-song-root'>
+                <div class="modal-north">
+                    Edit Song
+                </div>                
+                <div class="modal-center">
+                    <div class="modal-center-content">
+                        <table>
+                            <tr>
+                                <td>
+                                    Title:    
+                                </td> 
+                                
+                                <td>
+                                    <input text-align="right" type="text" id="edit-song-title"/>
+                                </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Artist:    
+                            </td> 
+                            
+                            <td>
+                                <input text-align="right" type="text" id="edit-song-artist"/>
+                            </td>
+                       </tr>
+
+                       <tr>
+                        <td>
+                            YouTube Id:    
+                        </td> 
+                        
+                        <td>
+                            <input text-align="right" type="text" id="edit-song-id"/> 
+                        </td>
+                     </tr>
+            </table>
+                       
+                         
+                    </div>
+                </div>
+                <div class="modal-south">
+                    <input type="button" id="edit-song-confirm-button" class="modal-button" value='Confirm' />
+                    <input type="button" id="edit-song-cancel-button" class="modal-button" value='Cancel' />
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+:root {
+    /* 
+          FIRST WE'LL DEFINE OUR SWATCHES, i.e. THE COMPLEMENTARY
+          COLORS THAT WE'LL USE TOGETHER IN MULTIPLE PLACES THAT
+          TOGETHER WILL MAKE UP A GIVEN THEME
+      */
+    --swatch-foundation: #eeeedd; 
+    --swatch-primary: #e6e6e6; 
+    --swatch-complement: #e1e4cb;
+    --swatch-contrast: #111111; 
+    --swatch-accent: #669966; 
+    --swatch-status: #123456;
+    --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
+  }
+  
+  body {
+    background-color: var(--swatch-foundation);
+  }
+  
+  #root {
+    background-color: var(--swatch-primary);
+    font-family: 'Tangerine', serif;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height:90%;
+    top: 5%;
+    display:grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 10% 10% 70% 10%;
+  }
+  
+  /* 
+    THE ROOT IS DIVIDED INTO 6 BROAD REGIONS:
+    -banner
+    -sidebar-heading
+    -sidebar-list
+    -edit-toolbar
+    -playlist-cards
+    -statusbar
+   */
+  
+  #banner {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    text-align:center;
+    background-image: linear-gradient(to bottom,         
+    #b8b808, #636723);
+    color: white;
+    font-size: 54pt;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+  }
+  
+  #sidebar-heading {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    text-align:center;
+    font-size: 36pt;
+    font-weight: bold;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--swatch-primary);
+  }
+  
+  #sidebar-list {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    background-color: var(--swatch-primary);
+  }
+  
+  #edit-toolbar {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    background-color: var(--swatch-primary);
+  }
+  
+  #playlist-cards {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    background-color: var(--swatch-accent);
+  }
+  
+  #statusbar {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+    background-color: #FFA07A;
+    color: black;
+    text-align: center;
+    font-size: 38pt;
+    padding-top: 4px;
+  }
+  
+  /*
+    CLASSES FOR EACH LIST CARD IN THE SIDEBAR
+    -list-card
+    -selected-list-card
+    -unselected-list-card
+    -list-card-button
+  */
+  .list-card, .selected-list-card, .unselected-list-card {
+    font-size: 32pt;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 25px;
+  }
+  
+  .selected-list-card {
+    background-color: var(--swatch-accent);
+    color: white;
+  }
+  
+  .unselected-list-card {
+    background-color: var(--swatch-complement);
+  }
+  
+  .list-card:hover, .selected-list-card:hover, .unselected-list-card:hover {
+    background-color: var(--swatch-contrast);
+    color: white;
+  }
+  
+  .list-card:hover .playlist-link {
+    color: white;
+  }
+  
+  .list-card-button {
+    float:right;
+    font-size:24pt;
+  }
+  
+  .is-dragging {
+    border: 2px black solid;
+    opacity: 0.5;
+  }
+  
+  .toolbar-button {
+    font-size:36pt;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    box-shadow: 2px 4px #888888;
+    border-radius: 5px;
+  }
+  
+  .disabled {
+    background-color: lightgray;
+  }
+  
+  .disabled:hover {
+    color: var(--swatch-neutral);
+  }
